@@ -10,7 +10,9 @@
 - [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
     - Django Server Base Image [python:3.8-alpine](https://hub.docker.com/_/python)
     - RabbitMQ Base Image [rabbitmq:3.7-management-alpine](https://hub.docker.com/_/rabbitmq)
-    
+- For authentication we are using the Django built-in Auth [django.contrib.auth](https://docs.djangoproject.com/en/3.0/topics/auth/)
+    - [Cookie-based user sessions](https://docs.djangoproject.com/en/3.0/topics/http/sessions/)
+    - [Cross Site Request Forgery protection (csrf)](https://docs.djangoproject.com/en/3.0/ref/csrf/)
    
 ##Installation
 - Make sure to have docker and Docker Compose running in your Machine.
@@ -30,5 +32,5 @@ The default access for the rabbitMq Console will be:
 - User: guest 
 - Password: guest
 
-For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq) 
+*For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)* 
 
