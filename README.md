@@ -9,6 +9,8 @@
 - [SQLite](https://www.sqlite.org)
 - [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
     - Django Server Base Image [python:3.8-alpine](https://hub.docker.com/_/python)
+    - RabbitMQ Base Image [rabbitmq:3.7-management-alpine](https://hub.docker.com/_/rabbitmq)
+    
    
 ##Installation
 - Make sure to have docker and Docker Compose running in your Machine.
@@ -21,5 +23,12 @@ To start the containers Run the next command on the root of the project `/django
 ```sqlite-sql
 > docker-compose up
 ```
+The Django Web Application Chat will be running on [http://localhost:8000](http://localhost:8000) 
 
-The application will be running on [http://localhost:8000](http://localhost:8000)
+A RabbitMQ Management Console Will be accessible on the port `15672` [http://localhost:15672](http://localhost:15672)
+The default access for the rabbitMq Console will be:
+- User: guest 
+- Password: guest
+
+For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq) 
+

@@ -12,3 +12,13 @@ services:
       - 8000:8000
     volumes:
       - ./django_chat:/src
+
+  rabbitmq:
+    restart: always
+    image: rabbitmq:3.7-management-alpine
+    hostname: rabbitmq
+    expose:
+      - 5672
+    ports:
+      # HTTP management UI
+      - 15672:15672
