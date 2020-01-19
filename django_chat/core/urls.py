@@ -1,5 +1,5 @@
 from django.contrib.auth import views as auth_views
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -8,5 +8,5 @@ urlpatterns = [
     path('signup/', views.SignUp.as_view(), name='signup'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-    path('', views.AuthUserHome.as_view(), name='auth-user-home'),
+    path('', include('chat.urls')),
 ]

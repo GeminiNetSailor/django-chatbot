@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms List</title>
+</head>
+<body>
+
+{% block content %}
+{% if user.is_authenticated %}
+Hi {{ user.username }}!
+<p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
+
+<h2>Create a new room?</h2>
+<form method="post" novalidate>
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button type="submit">Create Room</button>
+</form>
+<h2>Rooms List</h2>
+<ul>
+    {% for room in rooms %}
+    <li>
+        <a href="{% url 'room' room.name %}">{{ room.name }}</a> |
+        {% if room.owner == request.user %}
+            <a href="{% url 'delete-room' room.id %}">Delete</a>
+        {% else %}
+            {{room.owner.username}} room
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
