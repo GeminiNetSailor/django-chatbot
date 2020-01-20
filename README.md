@@ -2,7 +2,9 @@
 
 ## Content
 - [Built With](#Built with)
+- [Top-level directory layout](#Top-level directory layout)
 - [Installation](#Installation)
+- [Use bot own user for responses](#Use bot own user for responses)
 
 ## Built With
 - [Django 3.0](https://docs.djangoproject.com/en/3.0/)
@@ -14,12 +16,6 @@
     - [Cookie-based user sessions](https://docs.djangoproject.com/en/3.0/topics/http/sessions/)
     - [Cross Site Request Forgery protection (csrf)](https://docs.djangoproject.com/en/3.0/ref/csrf/)
 - [django Channels](https://channels.readthedocs.io/en/latest/) for WebSockets used by the Chat
-   
-## Folder Structure
-Folder Structure Conventions
-============================
-
-> Folder structure options and naming conventions for software projects
 
 ### Top-level directory layout
 
@@ -53,11 +49,9 @@ The default access for the rabbitMq Console will be:
 
 *For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)*
 
-### Logic Locations
 
-
-## Extra, Use bot own user for responses.
-The Current Requirements for the project are *The post owner will be the bot.* but django_bot can have the own user for the response.
+## Use bot own user for responses.
+The Current Requirements for the project are *The post owner will be the bot.* but django_bot have their own bot users that can do the response.
 you can enable this by settings `BOT_RESPONSE_AS_OWNER` to *false* in `django_chat/core/settings.py`
 ```
 BOT_RESPONSE_AS_OWNER = False
