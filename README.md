@@ -1,10 +1,10 @@
 # Django Chat Bot
 
 ## Content
-- [Built With](#Built with)
-- [Top-level directory layout](#Top-level directory layout)
-- [Installation](#Installation)
-- [Use bot own user for responses](#Use bot own user for responses)
+- [Built With](#built-with)
+- [Top-level directory layout](#top-level-directory-layout)
+- [Installation](#installation)
+- [Use bot own user for responses](#use-bot-own-user-for-responses)
 
 ## Built With
 - [Django 3.0](https://docs.djangoproject.com/en/3.0/)
@@ -29,28 +29,30 @@
     ├── requirements.txt        # python package required for the project
     └── README.md
 
-##Installation
+## Installation
 - Make sure to have docker and Docker Compose running in your Machine.
 - Make sure that no other service is using the port 8000.
 
 *In case you need to change the port you can do it through the docker-compose.yml file
 changing the port mapping for the server service.*
 
-To start the containers Run the next command on the root of the project `/django_chat `
-```sqlite-sql
+To start the containers Run the next command on the root of the project `/` where the docker-compose.yml file is
+```
 > docker-compose up
 ```
-The Django Web Application Chat will be running on [http://localhost:8000](http://localhost:8000) 
+When the services and successfully deploy you can access to two routes in the explorer:
 
-A RabbitMQ Management Console Will be accessible on the port `15672` [http://localhost:15672](http://localhost:15672)
+1. The Django Web Application Chat will be running on [http://localhost:8000](http://localhost:8000) 
+
+2. A RabbitMQ Management Console Will be accessible on the port `15672` [http://localhost:15672](http://localhost:15672)
 The default access for the rabbitMq Console will be:
 - User: guest 
 - Password: guest
 
-*For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)*
+*For more information rabbitMQ account Management Console you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)*
 
 ## Test
-Django_bot test location is on django_bot/test
+Django_bot test location is on `django_bot/test.py`
 
 ## Use bot own user for responses.
 The Current Requirements for the project are *The post owner will be the bot.* but django_bot have their own bot users that can do the response.
