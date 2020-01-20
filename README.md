@@ -49,6 +49,8 @@ The default access for the rabbitMq Console will be:
 
 *For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)*
 
+## Test
+Django_bot test location is on django_bot/test
 
 ## Use bot own user for responses.
 The Current Requirements for the project are *The post owner will be the bot.* but django_bot have their own bot users that can do the response.
