@@ -17,9 +17,8 @@ Hi {{ user.username }}!
 {% endblock %}
 
 <h2>Create a new room?</h2>
-<form method="post" novalidate>
+<form method="post" >
     {% csrf_token %}
-
     {{ form.as_p }}
     <button type="submit">Create Room</button>
 </form>

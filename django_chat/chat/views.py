@@ -21,7 +21,8 @@ def index(request):
             room_instace.owner = request.user
             room_instace.save()
             return render(request, template, data)
-
+        else:
+            data['form'] = form
     return render(request, template, data)
 
 
