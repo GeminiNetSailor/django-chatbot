@@ -36,11 +36,11 @@
 *In case you need to change the port you can do it through the docker-compose.yml file
 changing the port mapping for the server service.*
 
-To start the containers Run the next command on the root of the project `/` where the docker-compose.yml file is
+To start the containers run the next command on the root of the project `/` where the docker-compose.yml file is located.
 ```
 > docker-compose up
 ```
-When the services and successfully deploy you can access to two routes in the explorer:
+When the services are successfully deployed you can access to two routes in the explorer:
 
 1. The Django Web Application Chat will be running on [http://localhost:8000](http://localhost:8000) 
 
@@ -49,10 +49,11 @@ The default access for the rabbitMq Console will be:
 - User: guest 
 - Password: guest
 
-*For more information rabbitMQ account Management Console you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)*
+> For more information about rabbitMQ account Management Console you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 
 ## Test
 Django_bot test location is on `django_bot/test.py`
+
 
 ## Use bot own user for responses.
 The Current Requirements for the project are *The post owner will be the bot.* but django_bot have their own bot users that can do the response.
