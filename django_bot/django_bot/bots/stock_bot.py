@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-
+from stock_market import today_price_for
 from django_bot.models import Bot
 
 User = get_user_model()
@@ -14,9 +14,15 @@ class StockBot:
     def get_response(self):
         if self.parameter is None:
             return 'What Ticker are you looking for?'
-        symbol = 'APPL.US'
-        value = '93.42'
-        return '{0} quote is ${1} per share'.format(symbol, value)
+
+        data = today_price_for(self.parameter)
+        symbol = data['Symbol']
+        value = data['Close']
+
+        if value == 'N/D':
+            return "Sorry I didn't find any value for {}".format(symbol)
+
+        return '{0} quote is ${1:0,.2f} per share'.format(symbol, float(value))
 
     @property
     def user(self):

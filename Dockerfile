@@ -16,6 +16,9 @@ RUN apk update \
 ADD django_bot /django_bot
 RUN pip install -e /django_bot
 
+ADD stock_market /stock_market
+RUN pip install -e /stock_market
+
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]

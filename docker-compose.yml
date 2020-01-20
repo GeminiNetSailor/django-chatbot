@@ -13,6 +13,7 @@ services:
     volumes:
       - ./django_chat:/src
       - ./django_bot:/django_bot
+      - ./stock_market:/stock_market
 
   rabbitmq:
     restart: always

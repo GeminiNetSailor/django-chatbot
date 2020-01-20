@@ -24,8 +24,9 @@ Folder Structure Conventions
 ### Top-level directory layout
 
     .
-    ├── django_bot              # Reusable Django Bot (Imported on django chat to process chat messages)
+    ├── django_bot              # Reusable Django Bot package (Imported on django chat to process chat messages)
     ├── django_chat             # Main Django Project
+    ├── stock_market            # Package to retrieval stock market data. (stooq.com connection)
     ├── docker-compose.yml      # File defining Docker services, networks and volumes.
     ├── Dockerfile              # Django Project Docker image configuration
     ├── entrypoint              # Django Project started commands
@@ -51,6 +52,9 @@ The default access for the rabbitMq Console will be:
 - Password: guest
 
 *For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)*
+
+### Logic Locations
+
 
 ## Extra, Use bot own user for responses.
 The Current Requirements for the project are *The post owner will be the bot.* but django_bot can have the own user for the response.
