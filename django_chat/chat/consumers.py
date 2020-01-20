@@ -1,16 +1,16 @@
 # chat/consumers.py
 # chat/consumers.py
 import json
-
+from django.conf import settings
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 
+from django_bot import get_bot
 from .models import Message, Room
 
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
-        print('test')
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
         self.user = self.scope["user"]
@@ -34,16 +34,25 @@ class ChatConsumer(WebsocketConsumer):
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
-
+        user = self.user
         # Send message to room group
+
+        bot = get_bot(message)
+        if bot:
+            bot_response = bot.get_response()
+            if bot_response:
+                message = bot_response
+                if settings.BOT_RESPONSE_AS_OWNER and settings.BOT_RESPONSE_AS_OWNER is False:
+                    user = bot.user
+
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
                 'type': 'chat_message',
-                'message': self.user.username + ": " + message
+                'message': user.username + ": " + message
             }
         )
-        self.save_message(message)
+        self.save_message(message, user)
 
     # Receive message from room group
     def chat_message(self, event):
@@ -54,9 +63,10 @@ class ChatConsumer(WebsocketConsumer):
             'message': message
         }))
 
-    def save_message(self, content):
+    def save_message(self, content, user):
         room = Room.objects.get(name=self.room_name)
         message = Message.objects.create(
-            owner=self.user,
+            owner=user,
             content=content,
             room=room)
+

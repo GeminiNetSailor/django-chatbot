@@ -13,6 +13,9 @@ RUN apk update \
     && apk del base-build-deps \
     && apk del openssl-build-dep
 
+ADD django_bot /django_bot
+RUN pip install -e /django_bot
+
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 RUN ["chmod", "+x", "/entrypoint.sh"]

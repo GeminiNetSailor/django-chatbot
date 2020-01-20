@@ -1,6 +1,6 @@
 # Django Chat Bot
 
-## Installation
+## Content
 - [Built With](#Built with)
 - [Installation](#Installation)
 
@@ -13,7 +13,25 @@
 - For authentication we are using the Django built-in Auth [django.contrib.auth](https://docs.djangoproject.com/en/3.0/topics/auth/)
     - [Cookie-based user sessions](https://docs.djangoproject.com/en/3.0/topics/http/sessions/)
     - [Cross Site Request Forgery protection (csrf)](https://docs.djangoproject.com/en/3.0/ref/csrf/)
+- [django Channels](https://channels.readthedocs.io/en/latest/) for WebSockets used by the Chat
    
+## Folder Structure
+Folder Structure Conventions
+============================
+
+> Folder structure options and naming conventions for software projects
+
+### Top-level directory layout
+
+    .
+    ├── django_bot              # Reusable Django Bot (Imported on django chat to process chat messages)
+    ├── django_chat             # Main Django Project
+    ├── docker-compose.yml      # File defining Docker services, networks and volumes.
+    ├── Dockerfile              # Django Project Docker image configuration
+    ├── entrypoint              # Django Project started commands
+    ├── requirements.txt        # python package required for the project
+    └── README.md
+
 ##Installation
 - Make sure to have docker and Docker Compose running in your Machine.
 - Make sure that no other service is using the port 8000.
@@ -32,5 +50,12 @@ The default access for the rabbitMq Console will be:
 - User: guest 
 - Password: guest
 
-*For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)* 
+*For more information you can visit the Image Docker Hub [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)*
+
+## Extra, Use bot own user for responses.
+The Current Requirements for the project are *The post owner will be the bot.* but django_bot can have the own user for the response.
+you can enable this by settings `BOT_RESPONSE_AS_OWNER` to *false* in `django_chat/core/settings.py`
+```
+BOT_RESPONSE_AS_OWNER = False
+```
 

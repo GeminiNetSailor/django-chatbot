@@ -18,13 +18,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+# ==============================================================
+# Set this to False to use django_bot bots for responses
+BOT_RESPONSE_AS_OWNER = True
+# ==============================================================
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'g51oea_f=e8u@+wqgjtkf&gt$orrssuq_s_oi9c^qwffy285je'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
@@ -39,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chat'
+    'chat',
+    'django_bot'
 ]
 
 MIDDLEWARE = [
